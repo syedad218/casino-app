@@ -1,22 +1,34 @@
 import { FC, useState, createContext, useContext } from "react";
+import { login } from "./containers/Login/actions";
 
 interface Props {
   children: React.ReactNode;
 }
 
+interface Player {
+  name: string;
+  avatar: string;
+  event: string;
+}
+
 interface AuthContextType {
-  authenticated: boolean;
-  signIn: (user: string, callback: VoidFunction) => void;
+  authenticated: Player | null;
+  signIn: (username: string, password: string, callback: VoidFunction) => void;
   signOut: (callback: VoidFunction) => void;
 }
 
 export const AuthContext = createContext<AuthContextType>(null!);
 
 const AuthProvider: FC<Props> = ({ children }) => {
-  const [authenticated, setAuthenticated] = useState<boolean>(false);
+  const [authenticated, setAuthenticated] = useState<Player | null>(null);
 
-  const signIn = (newUser: string, callback: VoidFunction) => {
-    return callback();
+  const signIn = (username: string, password: string, callback: VoidFunction) => {
+    login(username, password).then((result) => {
+      if (result.status === "success") {
+        setAuthenticated(result.player);
+        callback();
+      }
+    });
   };
 
   const signOut = (callback: VoidFunction) => {
