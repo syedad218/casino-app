@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface Player {
+export interface Player {
   name: string;
   avatar: string;
   event: string;
