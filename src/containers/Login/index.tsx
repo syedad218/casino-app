@@ -5,19 +5,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const location: any = useLocation();
   const navigate = useNavigate();
   const auth = useAuth();
   const from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = (e: any) => {
-    console.log("username:", username);
-    console.log("password:", password);
-
-    auth.signIn(username, password, () => {
+  const loginCallback = (result: any) => {
+    if (result?.status === "success") {
       navigate(from, { replace: true });
-    });
+    } else if (result?.status === "fail") {
+      setError(result?.error);
+    }
+  };
+
+  const handleSubmit = (e: any) => {
+    auth.signIn(username, password, loginCallback);
 
     e.preventDefault();
   };
@@ -59,6 +63,15 @@ const Login = () => {
             </div>
           </div>
         </form>
+        {error && (
+          <div className="twelve wide column hidden">
+            <div className="ui negative message">
+              <i className="close icon" onClick={() => setError("")}></i>
+              <div className="header">Login failed!</div>
+              <p>{error.charAt(0).toUpperCase() + error.slice(1)}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

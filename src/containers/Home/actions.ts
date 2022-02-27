@@ -18,25 +18,26 @@ export const fetchCategories = async (
   try {
     const response = await fetch("http://localhost:3001/categories", { method: "get" });
     const data = await response.json();
-    console.log("categories", data);
     callback(data);
   } catch (error) {
     console.log("error in fetching categories", error);
   }
 };
 
-export const logout = async () => {
+export const logout = async (username: string) => {
   try {
-    await fetch("http://localhost:3001/logout", {
+    const response = await fetch("http://localhost:3001/logout", {
       method: "post",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "rebecka",
+        username,
       }),
     });
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log("error in user logout", error);
   }

@@ -1,4 +1,4 @@
-import { FC, useState, createContext, useContext, useEffect } from "react";
+import React, { FC, useState, createContext, useContext, useEffect } from "react";
 import { logout } from "./containers/Home/actions";
 import { login } from "./containers/Login/actions";
 
@@ -10,12 +10,13 @@ interface Player {
   name: string;
   avatar: string;
   event: string;
+  username: string;
 }
 
 interface AuthContextType {
   authenticated: Player | null;
-  signIn: (username: string, password: string, callback: VoidFunction) => void;
-  signOut: (callback: VoidFunction) => void;
+  signIn: (username: string, password: string, callback: any) => void;
+  signOut: (username: string, callback: any) => void;
 }
 
 export const AuthContext = createContext<AuthContextType>(null!);
@@ -31,19 +32,23 @@ const AuthProvider: FC<Props> = ({ children }) => {
     }
   }, [authenticated]);
 
-  const signIn = (username: string, password: string, callback: VoidFunction) => {
+  const signIn = (username: string, password: string, callback: any) => {
     login(username, password).then((result) => {
-      if (result.status === "success") {
+      if (!result) return;
+      else if (result?.status === "success") {
         setAuthenticated(result.player);
-        callback();
       }
+      callback(result);
     });
   };
 
-  const signOut = (callback: VoidFunction) => {
-    logout().then(() => {
-      setAuthenticated(null);
-      callback();
+  const signOut = (username: string, callback: any) => {
+    logout(username).then((response) => {
+      if (!response) return;
+      else if (response?.status === "success") {
+        setAuthenticated(null);
+      }
+      callback(response);
     });
   };
 

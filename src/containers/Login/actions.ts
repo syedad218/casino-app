@@ -7,13 +7,12 @@ export const login = async (username: string, password: string) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "rebecka",
-        password: "secret",
+        username,
+        password,
       }),
     });
     const data = await response.json();
-    console.log(data);
-    return data;
+    return { ...data, player: { ...data?.player, username } };
   } catch (error) {
     console.log("error inside login action", error);
   }

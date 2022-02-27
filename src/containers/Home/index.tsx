@@ -8,8 +8,8 @@ const Home = () => {
   const [games, setGames] = useState<GameType[]>([]);
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const auth = useAuth();
+  const username = auth?.authenticated?.username;
   const player = auth.authenticated;
-  console.log("games", games);
 
   useEffect(() => {
     fetchGames(setGames);
@@ -17,8 +17,10 @@ const Home = () => {
   }, []);
 
   const handleLogout = () => {
-    auth.signOut(() => {
-      localStorage.removeItem("authenticated");
+    auth.signOut(username!, (response: any) => {
+      if (response?.status === "success") {
+        localStorage.removeItem("authenticated");
+      }
     });
   };
 
