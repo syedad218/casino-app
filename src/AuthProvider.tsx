@@ -1,4 +1,5 @@
 import { FC, useState, createContext, useContext, useEffect } from "react";
+import { logout } from "./containers/Home/actions";
 import { login } from "./containers/Login/actions";
 
 interface Props {
@@ -40,7 +41,10 @@ const AuthProvider: FC<Props> = ({ children }) => {
   };
 
   const signOut = (callback: VoidFunction) => {
-    return callback();
+    logout().then(() => {
+      setAuthenticated(null);
+      callback();
+    });
   };
 
   const initialValue = { authenticated, signIn, signOut };

@@ -1,17 +1,26 @@
 import { FC, useState, useEffect } from "react";
 import { useAuth } from "../../AuthProvider";
-import { fetchGames } from "./actions";
+import { fetchGames, fetchCategories } from "./actions";
 import Game, { GameType } from "./Game";
+import Categories, { CategoryType } from "./Categories";
 
 const Home = () => {
   const [games, setGames] = useState<GameType[]>([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
   const auth = useAuth();
   const player = auth.authenticated;
   console.log("games", games);
 
   useEffect(() => {
     fetchGames(setGames);
+    fetchCategories(setCategories);
   }, []);
+
+  const handleLogout = () => {
+    auth.signOut(() => {
+      localStorage.removeItem("authenticated");
+    });
+  };
 
   return (
     <div className="casino" style={{ display: "block" }}>
@@ -31,7 +40,7 @@ const Home = () => {
             </div>
             {/* <!-- end player item template --> */}
           </div>
-          <div className="logout ui left floated secondary button inverted">
+          <div className="logout ui left floated secondary button inverted" onClick={handleLogout}>
             <i className="left chevron icon"></i>Log Out
           </div>
         </div>
@@ -56,13 +65,9 @@ const Home = () => {
           <h3 className="ui dividing header">Categories</h3>
 
           <div className="ui selection animated list category items">
-            {/* <!-- category item template --> */}
-            <div className="category item">
-              <div className="content">
-                <div className="header"></div>
-              </div>
-            </div>
-            {/* <!-- end category item template --> */}
+            {categories?.map((category) => (
+              <Categories category={category} key={category?.id} />
+            ))}
           </div>
         </div>
       </div>

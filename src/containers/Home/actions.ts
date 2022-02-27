@@ -1,5 +1,6 @@
 import React from "react";
 import { GameType } from "./Game";
+import { CategoryType } from "./Categories";
 
 export const fetchGames = async (callback: React.Dispatch<React.SetStateAction<GameType[]>>) => {
   try {
@@ -8,5 +9,35 @@ export const fetchGames = async (callback: React.Dispatch<React.SetStateAction<G
     callback(data);
   } catch (error) {
     console.log("error in fetching games", error);
+  }
+};
+
+export const fetchCategories = async (
+  callback: React.Dispatch<React.SetStateAction<CategoryType[]>>
+) => {
+  try {
+    const response = await fetch("http://localhost:3001/categories", { method: "get" });
+    const data = await response.json();
+    console.log("categories", data);
+    callback(data);
+  } catch (error) {
+    console.log("error in fetching categories", error);
+  }
+};
+
+export const logout = async () => {
+  try {
+    await fetch("http://localhost:3001/logout", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "rebecka",
+      }),
+    });
+  } catch (error) {
+    console.log("error in user logout", error);
   }
 };
