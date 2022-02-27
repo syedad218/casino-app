@@ -1,10 +1,17 @@
 import { FC, useState, useEffect } from "react";
 import { useAuth } from "../../AuthProvider";
+import { fetchGames } from "./actions";
+import Game, { GameType } from "./Game";
 
 const Home = () => {
+  const [games, setGames] = useState<GameType[]>([]);
   const auth = useAuth();
   const player = auth.authenticated;
-  console.log("player", player);
+  console.log("games", games);
+
+  useEffect(() => {
+    fetchGames(setGames);
+  }, []);
 
   return (
     <div className="casino" style={{ display: "block" }}>
@@ -13,13 +20,13 @@ const Home = () => {
           <div className="ui list">
             {/* <!-- player item template --> */}
             <div className="player item">
-              <img className="ui avatar image" src="" alt="avatar" />
+              <img className="ui avatar image" src={player?.avatar} alt="avatar" />
 
               <div className="content">
                 <div className="header">
-                  <b className="name"></b>
+                  <b className="name">{player?.name}</b>
                 </div>
-                <div className="description event"></div>
+                <div className="description event">{player?.event}</div>
               </div>
             </div>
             {/* <!-- end player item template --> */}
@@ -35,30 +42,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="ui grid">
+      <div className="ui two column stackable grid">
         <div className="twelve wide column">
           <h3 className="ui dividing header">Games</h3>
 
           <div className="ui relaxed divided game items links">
-            {/* <!-- game item template --> */}
-            <div className="game item">
-              <div className="ui small image">
-                <img src="" alt="game-icon" />
-              </div>
-              <div className="content">
-                <div className="header">
-                  <b className="name"></b>
-                </div>
-                <div className="description"></div>
-                <div className="extra">
-                  <div className="play ui right floated secondary button inverted">
-                    Play
-                    <i className="right chevron icon"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* <!-- end game item template --> */}
+            {games?.map((game) => (
+              <Game game={game} key={game?.code} />
+            ))}
           </div>
         </div>
         <div className="four wide column">

@@ -1,4 +1,4 @@
-import { FC, useState, createContext, useContext } from "react";
+import { FC, useState, createContext, useContext, useEffect } from "react";
 import { login } from "./containers/Login/actions";
 
 interface Props {
@@ -20,7 +20,15 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType>(null!);
 
 const AuthProvider: FC<Props> = ({ children }) => {
-  const [authenticated, setAuthenticated] = useState<Player | null>(null);
+  const prevAuth = localStorage.getItem("authenticated");
+  const userDetails = JSON.parse(prevAuth!);
+  const [authenticated, setAuthenticated] = useState<Player | null>(() => userDetails);
+
+  useEffect(() => {
+    if (authenticated) {
+      localStorage.setItem("authenticated", JSON.stringify(authenticated));
+    }
+  }, [authenticated]);
 
   const signIn = (username: string, password: string, callback: VoidFunction) => {
     login(username, password).then((result) => {
