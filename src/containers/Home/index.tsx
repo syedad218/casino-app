@@ -42,12 +42,12 @@ const Home = () => {
             </div>
             {/* <!-- end player item template --> */}
           </div>
-          <div className="logout ui left floated secondary button inverted" onClick={handleLogout}>
+          <div className="logout ui secondary button inverted" onClick={handleLogout}>
             <i className="left chevron icon"></i>Log Out
           </div>
         </div>
         <div className="four wide column">
-          <div className="search ui small icon input ">
+          <div className="search ui left floated fluid icon input">
             <input type="text" placeholder="Search Game" />
             <i className="search icon"></i>
           </div>
