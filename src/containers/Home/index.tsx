@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className="casino" style={{ display: "block" }}>
-      <div className="ui grid centered">
+      <div className="ui two column stackable grid centered">
         <div className="twelve wide column">
           <div className="ui list">
             {/* <!-- player item template --> */}
