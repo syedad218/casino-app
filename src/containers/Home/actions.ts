@@ -4,7 +4,7 @@ import { CategoryType } from "./Categories";
 
 export const fetchGames = async (callback: React.Dispatch<React.SetStateAction<GameType[]>>) => {
   try {
-    const response = await fetch("http://localhost:3001/games", { method: "get" });
+    const response = await fetch(`${process.env.REACT_APP_JSON_SERVER}/games`, { method: "get" });
     const data = await response.json();
     callback(data);
   } catch (error) {
@@ -16,7 +16,9 @@ export const fetchCategories = async (
   callback: React.Dispatch<React.SetStateAction<CategoryType[]>>
 ) => {
   try {
-    const response = await fetch("http://localhost:3001/categories", { method: "get" });
+    const response = await fetch(`${process.env.REACT_APP_JSON_SERVER}/categories`, {
+      method: "get",
+    });
     const data = await response.json();
     callback(data);
   } catch (error) {
@@ -26,7 +28,7 @@ export const fetchCategories = async (
 
 export const logout = async (username: string) => {
   try {
-    const response = await fetch("http://localhost:3001/logout", {
+    const response = await fetch(`${process.env.REACT_APP_JSON_SERVER}/logout`, {
       method: "post",
       headers: {
         Accept: "application/json",

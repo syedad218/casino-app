@@ -1,6 +1,6 @@
 export const login = async (username: string, password: string) => {
   try {
-    const response = await fetch("http://localhost:3001/login", {
+    const response = await fetch(`${process.env.REACT_APP_JSON_SERVER}/login`, {
       method: "post",
       headers: {
         Accept: "application/json",
