@@ -1,7 +1,5 @@
 # Casino App
 
-## Installation
-
 - Install node >= v12.x
 - Run `npm install` to install dependencies
 - Run `npm install -g json-server` to install json-server
