@@ -16,3 +16,13 @@
 - Authentication is managed by using custom AuthProvider context. - [React Context](https://reactjs.org/docs/context.html)
 - Application is using Semantic style for styling and UI components. - [Semantic UI](https://react.semantic-ui.com/)
 - Code is written in Typescript - [TypeScript](https://www.typescriptlang.org/)
+- It's using JSON-Server to mock API calls and DB. - [JSON-Server](https://github.com/typicode/json-server)
+
+## Functionality
+
+- [x] Login
+- [x] Logout
+- [x] List Games and Categories
+- [x] Play Game
+- [x] Filter Games by searching in the search bar
+- [x] Filter Games by category by choosing a category
