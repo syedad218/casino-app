@@ -13,12 +13,12 @@
 
 ## App structure
 
-- It's a single page application using React - [React.js](https://reactjs.org/) &nbsp; <img src="https://slackmojis.com/emojis/1161-react/download" width="12px" height="12px" alt="reactjs">
-- It's using React Router to manage routing. - [React Router](https://reacttraining.com/react-router/web/guides/quick-start) &nbsp; <img src="https://iconape.com/wp-content/files/sm/371377/svg/371377.svg" width="12px" height="12px" alt="react-router">
-- Authentication is managed by using custom AuthProvider context. - [React Context](https://reactjs.org/docs/context.html) &nbsp; <img src="https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png" width="12px" height="12px" alt="react-context">
-- Application is using Semantic style for styling and UI components. - [Semantic UI](https://react.semantic-ui.com/) &nbsp; <img src="https://semantic-ui.com/images/logo.png" width="12px" height="12px" alt="semantic-ui">
-- Code is written in Typescript - [TypeScript](https://www.typescriptlang.org/) &nbsp; <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" width="12px" height="12px" alt="typescript">
-- It's using JSON-Server to mock API calls and Database data. - [JSON-Server](https://github.com/typicode/json-server) &nbsp; <img src="https://cms-assets.tutsplus.com/uploads/users/34/posts/27871/preview_image/json.jpg" width="12px" height="12px" alt="json-server">
+- It's a single page application using React - [React.js](https://reactjs.org/) &nbsp; <img src="https://slackmojis.com/emojis/1161-react/download" width="16px" height="16px" alt="reactjs">
+- It's using React Router to manage routing. - [React Router](https://reacttraining.com/react-router/web/guides/quick-start) &nbsp; <img src="https://iconape.com/wp-content/files/sm/371377/svg/371377.svg" width="16px" height="16px" alt="react-router">
+- Authentication is managed by using custom AuthProvider context. - [React Context](https://reactjs.org/docs/context.html) &nbsp; <img src="https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png" width="16px" height="16px" alt="react-context">
+- Application is using Semantic style for styling and UI components. - [Semantic UI](https://react.semantic-ui.com/) &nbsp; <img src="https://semantic-ui.com/images/logo.png" width="16px" height="16px" alt="semantic-ui">
+- Code is written in Typescript - [TypeScript](https://www.typescriptlang.org/) &nbsp; <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" width="16px" height="16px" alt="typescript">
+- It's using JSON-Server to mock API calls and Database data. - [JSON-Server](https://github.com/typicode/json-server) &nbsp; <img src="https://cms-assets.tutsplus.com/uploads/users/34/posts/27871/preview_image/json.jpg" width="16px" height="16px" alt="json-server">
 
 > Folder structure for the app.
 
@@ -30,6 +30,7 @@
         |   ├── index.tsx
         |   ├── AuthProvider.tsx                     # AuthProvider context
         |   ├── AuthenticatedRoute.tsx               # Protected Route wrapper
+        |   ├── routes.ts                            # Routes templates
         ├── Components                               # Common components
         |   ├── Game
         |   |   ├── index.tsx
@@ -51,22 +52,22 @@
                 ├── actions.ts
         ...
 
-## Existing Functionalities And Improvements To Do :seedling:
+## Implemented Functionalities And Improvements To Do &nbsp;:seedling:
 
-- [x] **Authenticated Routes**
+- [x] **AUTHENTICATED ROUTES COMPONENT**
   - [x] _Custom component that checks for auth state before taking to protected route and redirects to login page if not authenticated._
-- [x] **Login**
+- [x] **LOGIN**
   - [x] _Store the path that user is trying to access if not logged in, and redirect to login page._
   - [x] _Login with username and password_
   - [x] _Error message when login fails, allow to retry_
   - [x] _Redirect to home page or path user was trying to access, after successful login_
   - [x] _Persist login state after page reload, using localStorage_
   - [x] _If already logged in, redirect to home page when accessing login page_
-- [x] **Logout**
+- [x] **LOGOUT**
   - [x] _Clear login state from localStorage and context on successful logout._
   - [x] _Redirect to login page_
   - [ ] _Show error message if logout fails_
-- [x] **List Games and Categories**
+- [x] **LIST GAMES AND CATEGORIES**
   - [x] _Requires user to be logged in_
   - [x] _List all games and categories using provided API's_
   - [x] _Filter games by category_
@@ -74,18 +75,18 @@
   - [ ] _Paginate games by page number in case of large list_
   - [ ] _Sort games by popularity, published date, etc_
   - [ ] _Show loading indicator while fetching data_
-- [x] **Play Game**
+- [x] **PLAY GAME**
   - [x] _Requires user to be logged in_
   - [x] _Play a game by clicking on Play button, using provided JS Function_
   - [x] _Page should be responsive on Mobile device as well_
   - [x] _Ability to go back to listing screen_
   - [ ] _Game screen iframe can send an event to parent window when game is finished loading, so that parent window can show the game screen. While the game iframe is loading the game screen can show a loading screen._
-- [x] **Filter Games by searching in the search bar**
+- [x] **FILTER GAMES BY SEARCHING IN THE SEARCH BOX**
   - [x] _Search by game name_
   - [ ] _Search by game description_
   - [x] _Debounce user typing event to reduce state updates_
   - [x] _Show empty state text when no results found_
-- [x] **Filter Games by category by choosing a category**
+- [x] **FILTER GAMES BY CATEGORY BY CHOOSING A CATEGORY**
   - [x] _Filter games by category by clicking on a category_
   - [x] _Show active state on selected category by background color_
 
@@ -116,7 +117,7 @@
 
 - moved the back button to the top row of the game screen, so that game screen can occupy full grid width
 
-## Notes
+## Dev Notes :robot:
 
 **Custom Auth provider implementation using React Context.**
 
