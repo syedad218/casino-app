@@ -20,6 +20,37 @@
 - Code is written in Typescript - [TypeScript](https://www.typescriptlang.org/) &nbsp; <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" width="12px" height="12px" alt="typescript">
 - It's using JSON-Server to mock API calls and Database data. - [JSON-Server](https://github.com/typicode/json-server) &nbsp; <img src="https://cms-assets.tutsplus.com/uploads/users/34/posts/27871/preview_image/json.jpg" width="12px" height="12px" alt="json-server">
 
+> Folder structure for the app.
+
+    .
+    ├── src
+        ...
+        ├── index.tsx
+        ├── App
+        |   ├── index.tsx
+        |   ├── AuthProvider.tsx
+        |   ├── AuthenticatedRoute.tsx
+        ├── Components
+        |   ├── Game
+        |   |   ├── index.tsx
+        |   |   ├── types.ts
+        |   ├── Profile
+        |   |   ├── index.tsx
+        |   ├── SearchBar
+        |   |   ├── index.tsx
+        ├── Containers
+            ├── GameScreen
+            |   ├── index.tsx
+            ├── Home
+            |   ├── index.tsx
+            |   ├── actions.ts
+            |   ├── Games.tsx
+            |   ├── Categories.tsx
+            ├── Login
+                ├── index.tsx
+                ├── actions.ts
+        ...
+
 ## Functionality
 
 - [x] **Authenticated Routes**
@@ -62,8 +93,8 @@
 - updated game and category listing grid to be `stackable` on mobile devices using semantic classes.
 
 ```diff
--<div className="ui grid">
-+<div className="ui stackable grid">
+- <div className="ui grid">
++ <div className="ui stackable grid">
 ```
 
 - updated the search bar to be responsive on mobile devices. using fluid semantic class and stack below the user details.
@@ -72,8 +103,8 @@
 - made the game-play screen responsive on mobile devices, by updating the width to `100%` during initializing the iframe, inside the `game.launch` function definition.
 
 ```diff
--s.frameBorder=0,s.width="640px",s.height="480px"
-+s.frameBorder=0,s.width="100%",s.height="100%"
+- s.frameBorder=0,s.width="640px",s.height="480px"
++ s.frameBorder=0,s.width="100%",s.height="100%"
 ```
 
 - moved the back button to the top row of the game screen, so that game screen can occupy full grid width

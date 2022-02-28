@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Player } from "../../AuthProvider";
+import { Player } from "../../containers/App/AuthProvider";
 
 interface Props {
   user: Player | null;

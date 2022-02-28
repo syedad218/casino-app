@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import AuthenticatedRoute from "./AuthenticatedRoute";
-import Login from "./containers/Login";
-import Home from "./containers/Home";
-import GameScreen from "./containers/GameScreen";
+import Login from "../Login";
+import Home from "../Home";
+import GameScreen from "../GameScreen";
 
 function App() {
   return (

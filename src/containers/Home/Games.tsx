@@ -1,13 +1,6 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
-
-export interface GameType {
-  code: string;
-  name: string;
-  icon: string;
-  categoryIds: number[];
-  description: string;
-}
+import GameCard from "../../components/Game";
+import { GameType } from "../../components/Game/types";
 
 interface Props {
   filteredGames: GameType[];
@@ -15,8 +8,6 @@ interface Props {
 }
 
 const Game: FC<Props> = ({ filteredGames, loading }) => {
-  const navigate = useNavigate();
-
   if (!filteredGames || filteredGames.length === 0) {
     return (
       <div className="ui icon message">
@@ -30,26 +21,7 @@ const Game: FC<Props> = ({ filteredGames, loading }) => {
   return (
     <div className="ui relaxed divided game items links">
       {filteredGames?.map((game) => (
-        <div className="game item" key={game?.code}>
-          <div className="ui small image">
-            <img src={game?.icon} alt="game-icon" />
-          </div>
-          <div className="content">
-            <div className="header">
-              <b className="name">{game?.name}</b>
-            </div>
-            <div className="description">{game?.description}</div>
-            <div className="extra">
-              <div
-                className="play ui right floated secondary button inverted"
-                onClick={() => navigate(`/games/${game?.code}`)}
-              >
-                Play
-                <i className="right chevron icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+        <GameCard game={game} key={game?.code} />
       ))}
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { FC, useState, createContext, useContext, useEffect } from "react";
-import { logout } from "./containers/Home/actions";
-import { login } from "./containers/Login/actions";
+import { logout } from "../Home/actions";
+import { login } from "../Login/actions";
 
 interface Props {
   children: React.ReactNode;

@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
-import { useAuth } from "../../AuthProvider";
+import { useAuth } from "../App/AuthProvider";
 import { fetchGames, fetchCategories } from "./actions";
-import Games, { GameType } from "./Games";
+import Games from "./Games";
+import { GameType } from "../../components/Game/types";
 import Categories, { CategoryType } from "./Categories";
-import Profile from "./Profile";
-import SearchBar from "./SearchBar";
+import Profile from "../../components/Profile";
+import SearchBar from "../../components/SearchBar";
 
 const Home = () => {
   const [games, setGames] = useState<GameType[]>([]);

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./containers/App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import AuthProvider from "./AuthProvider";
+import AuthProvider from "./containers/App/AuthProvider";
 
 ReactDOM.render(
   <React.StrictMode>
