@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AuthenticatedRoute from "./AuthenticatedRoute";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
@@ -15,15 +15,6 @@ function App() {
       <div className="main container">
         <Routes>
           <Route
-            path="/"
-            element={
-              <AuthenticatedRoute>
-                <Home />
-              </AuthenticatedRoute>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route
             path="/games/:game"
             element={
               <AuthenticatedRoute>
@@ -31,6 +22,16 @@ function App() {
               </AuthenticatedRoute>
             }
           />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <AuthenticatedRoute>
+                <Home />
+              </AuthenticatedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </div>
