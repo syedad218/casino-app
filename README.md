@@ -56,7 +56,7 @@
                 ├── actions.ts
         ...
 
-## Implemented Functionalities And Improvements To Do &nbsp;:seedling:
+## Implemented functionalities and improvements to do &nbsp;:seedling:
 
 - [x] **AUTHENTICATED ROUTES COMPONENT**
   - [x] _Custom component that checks for auth state before taking to protected route and redirects to login page if not authenticated._
@@ -121,7 +121,7 @@
 
 - moved the back button to the top row of the game screen, so that game screen can occupy full grid width
 
-## Dev Notes :robot:
+## Dev notes :robot:
 
 **Custom Auth provider implementation using React Context.**
 
