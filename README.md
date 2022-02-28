@@ -11,7 +11,7 @@
 
 > Voila! you have the app running :tada:
 
-> Demo usage of app :fire:
+> App Demo :fire:
 
 > <img src="docs/casino-app-demo.gif" width="250" height="500" alt="app-demo" />
 
