@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useAuth } from "../../AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -11,6 +11,13 @@ const Login = () => {
   const navigate = useNavigate();
   const auth = useAuth();
   const from = location.state?.from?.pathname || "/";
+
+  /** handle already logged-in users by redirecting to home screen */
+  useEffect(() => {
+    if (auth.authenticated) {
+      navigate(from, { replace: true });
+    }
+  }, [auth, from, navigate]);
 
   const loginCallback = (result: any) => {
     if (result?.status === "success") {

@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, useMemo } from "react";
 import { useAuth } from "../../AuthProvider";
 import { fetchGames, fetchCategories } from "./actions";
-import Game, { GameType } from "./Game";
+import Games, { GameType } from "./Games";
 import Categories, { CategoryType } from "./Categories";
 import Profile from "./Profile";
 import SearchBar from "./SearchBar";
@@ -29,13 +29,12 @@ const Home = () => {
   };
 
   const filteredGames = useMemo(() => {
-    return games
-      .filter((game: GameType) => {
-        return game.name.toLowerCase().includes(searchText.toLowerCase());
-      })
-      .filter((game: GameType) => {
-        return game.categoryIds.includes(selectedCategory);
-      });
+    return games.filter((game: GameType) => {
+      return (
+        game.categoryIds.includes(selectedCategory) &&
+        game.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+    });
   }, [games, searchText, selectedCategory]);
 
   return (
@@ -47,25 +46,16 @@ const Home = () => {
       <div className="ui two column stackable grid">
         <div className="twelve wide column">
           <h3 className="ui dividing header">Games</h3>
-
-          <div className="ui relaxed divided game items links">
-            {filteredGames?.map((game) => (
-              <Game game={game} key={game?.code} />
-            ))}
-          </div>
+          <Games filteredGames={filteredGames} loading={true} />
         </div>
         <div className="four wide column">
           <h3 className="ui dividing header">Categories</h3>
-          <div className="ui relaxed selection animated list category items">
-            {categories?.map((category) => (
-              <Categories
-                category={category}
-                key={category?.id}
-                selectedCategory={selectedCategory}
-                setSelectCategory={setSelectedCategory}
-              />
-            ))}
-          </div>
+          <Categories
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectCategory={setSelectedCategory}
+            loading={true}
+          />
         </div>
       </div>
     </div>

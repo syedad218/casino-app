@@ -1,5 +1,5 @@
 import React from "react";
-import { GameType } from "./Game";
+import { GameType } from "./Games";
 import { CategoryType } from "./Categories";
 
 export const fetchGames = async (callback: React.Dispatch<React.SetStateAction<GameType[]>>) => {

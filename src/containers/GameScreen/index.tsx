@@ -12,19 +12,18 @@ const GameScreen = () => {
 
   return (
     <div className="ingame" style={{ display: "block" }}>
-      <div className="ui grid centered">
-        <div className="three wide column">
+      <div className="ui stackable grid centered">
+        <div className="twelve wide column">
           <div
-            className="ui right floated secondary button inverted"
+            className="ui secondary button inverted"
             onClick={() => navigate("/", { replace: true })}
           >
             <i className="left chevron icon"></i>Back
           </div>
         </div>
-        <div className="ten wide column">
+        <div className="twelve wide column">
           <div id="game-launch"></div>
         </div>
-        <div className="three wide column"></div>
       </div>
     </div>
   );
