@@ -9,7 +9,7 @@
 - Run `npm run start` to start the react app locally
 - go to http://localhost:3000/
 
-> Voila! you have the app running :celebrate:
+> Voila! you have the app running :tada:
 
 ## App structure
 
@@ -27,7 +27,7 @@
 - [x] Login
 
   - [x] store the path trying to access if not logged in, and redirect to login
-  - [x] Login with email and password
+  - [x] Login with username and password
   - [x] Error message when login fails, allow to retry
   - [x] Redirect to home page/path trying to access, after successful login
   - [x] Persist login state after page reload, using localStorage
@@ -37,7 +37,7 @@
 
   - [x] clear login state from localStorage and context.
   - [x] redirect to login page
-  - [] show error message if logout fails
+  - [ ] show error message if logout fails
 
 - [x] List Games and Categories
 
@@ -45,20 +45,21 @@
   - [x] List all games and categories using provided API's
   - [x] Filter games by category
   - [x] Filter games by search term
-  - [] Paginate games by page number in case of large list
-  - [] sort games by popularity, published date, etc
+  - [ ] Paginate games by page number in case of large list
+  - [ ] sort games by popularity, published date, etc
 
 - [x] Play Game
 
   - [x] Requires user to be logged in
-  - [x] Play a game using provided JS Function
+  - [x] Play a game by clicking on Play button, using provided JS Function
   - [x] Page should be responsive on Mobile device as well
   - [x] Ability to go back to listing screen
+  - [ ] Game screen iframe can send an event to parent window when game is finished loading, so that parent window can show the game screen. While the game iframe is loading the game screen can show a loading screen.
 
 - [x] Filter Games by searching in the search bar
 
   - [x] Search by game name
-  - [] Search by game description
+  - [ ] Search by game description
   - [x] Debounce user typing event to reduce state updates
   - [x] show empty state text when no results found
 
