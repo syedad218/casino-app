@@ -25,45 +25,43 @@
 - [x] Authenticated Routes
   - [x] Custom component that checks for auth state before taking to protected route and redirects to login page if not authenticated.
 - [x] Login
-
-  - [x] store the path trying to access if not logged in, and redirect to login
+  - [x] Store the path that user is trying to access if not logged in, and redirect to login page.
   - [x] Login with username and password
   - [x] Error message when login fails, allow to retry
-  - [x] Redirect to home page/path trying to access, after successful login
+  - [x] Redirect to home page or path user was trying to access, after successful login
   - [x] Persist login state after page reload, using localStorage
-  - [x] if already logged in, redirect to home page when accessing login page
-
+  - [x] If already logged in, redirect to home page when accessing login page
 - [x] Logout
-
-  - [x] clear login state from localStorage and context.
-  - [x] redirect to login page
-  - [ ] show error message if logout fails
-
+  - [x] Clear login state from localStorage and context on successful logout.
+  - [x] Redirect to login page
+  - [ ] Show error message if logout fails
 - [x] List Games and Categories
-
   - [x] Requires user to be logged in
   - [x] List all games and categories using provided API's
   - [x] Filter games by category
   - [x] Filter games by search term
   - [ ] Paginate games by page number in case of large list
-  - [ ] sort games by popularity, published date, etc
-
+  - [ ] Sort games by popularity, published date, etc
 - [x] Play Game
-
   - [x] Requires user to be logged in
   - [x] Play a game by clicking on Play button, using provided JS Function
   - [x] Page should be responsive on Mobile device as well
   - [x] Ability to go back to listing screen
   - [ ] Game screen iframe can send an event to parent window when game is finished loading, so that parent window can show the game screen. While the game iframe is loading the game screen can show a loading screen.
-
 - [x] Filter Games by searching in the search bar
-
   - [x] Search by game name
   - [ ] Search by game description
   - [x] Debounce user typing event to reduce state updates
-  - [x] show empty state text when no results found
-
+  - [x] Show empty state text when no results found
 - [x] Filter Games by category by choosing a category
-
   - [x] Filter games by category by clicking on a category
-  - [x] show active state on selected category by background color
+  - [x] Show active state on selected category by background color
+
+## Updates to the existing code
+
+- updated game and category listing grid to be stackable on mobile devices using semantic classes.
+- updated the search bar to be responsive on mobile devices. using fluid semantic class and stack below the user details.
+- made the category list relaxed by using relaxed semantic class.
+- added active category state to the category list. by adding active semantic class to the category list item.
+- made the game-play screen responsive on mobile devices, by updating the width to `100%` during initializing the iframe, inside the `game.launch` function definition.
+- moved the back button to the top row of the game screen, so that game screen can occupy full grid width
