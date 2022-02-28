@@ -25,20 +25,20 @@
     .
     ├── src
         ...
-        ├── index.tsx
+        ├── index.tsx (main entry point)
         ├── App
         |   ├── index.tsx
-        |   ├── AuthProvider.tsx
-        |   ├── AuthenticatedRoute.tsx
-        ├── Components
+        |   ├── AuthProvider.tsx                     # AuthProvider context
+        |   ├── AuthenticatedRoute.tsx               # Protected Route wrapper
+        ├── Components                               # Common components
         |   ├── Game
         |   |   ├── index.tsx
-        |   |   ├── types.ts
+        |   |   ├── types.ts                         # Type definition
         |   ├── Profile
         |   |   ├── index.tsx
         |   ├── SearchBar
         |   |   ├── index.tsx
-        ├── Containers
+        ├── Containers                               # Containers/Pages of App
             ├── GameScreen
             |   ├── index.tsx
             ├── Home
@@ -108,3 +108,45 @@
 ```
 
 - moved the back button to the top row of the game screen, so that game screen can occupy full grid width
+
+## Notes
+
+> Custom Auth provider implementation using React Context.
+
+```typescript
+const AuthProvider: FC<Props> = ({ children }) => {
+  const prevAuth = localStorage.getItem("authenticated");
+  const userDetails = JSON.parse(prevAuth!);
+  const [authenticated, setAuthenticated] = useState<Player | null>(() => userDetails);
+
+  useEffect(() => {
+    if (authenticated) {
+      localStorage.setItem("authenticated", JSON.stringify(authenticated));
+    }
+  }, [authenticated]);
+
+  const signIn = (username: string, password: string, callback: any) => {
+    login(username, password).then((result) => {
+      if (!result) return;
+      else if (result?.status === "success") {
+        setAuthenticated(result.player);
+      }
+      callback(result);
+    });
+  };
+
+  const signOut = (username: string, callback: any) => {
+    logout(username).then((response) => {
+      if (!response) return;
+      else if (response?.status === "success") {
+        setAuthenticated(null);
+      }
+      callback(response);
+    });
+  };
+
+  const initialValue = { authenticated, signIn, signOut };
+
+  return <AuthContext.Provider value={initialValue}>{children}</AuthContext.Provider>;
+};
+```
