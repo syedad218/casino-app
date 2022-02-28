@@ -73,6 +73,7 @@
   - [x] _Filter games by search term_
   - [ ] _Paginate games by page number in case of large list_
   - [ ] _Sort games by popularity, published date, etc_
+  - [ ] _Show loading indicator while fetching data_
 - [x] **Play Game**
   - [x] _Requires user to be logged in_
   - [x] _Play a game by clicking on Play button, using provided JS Function_
@@ -114,39 +115,43 @@
 > Custom Auth provider implementation using React Context.
 
 ```typescript
+export const AuthContext = createContext<AuthContextType>(null!);
+
 const AuthProvider: FC<Props> = ({ children }) => {
-  const prevAuth = localStorage.getItem("authenticated");
+  const prevAuth = localStorage.getItem(AUTH_KEY);
   const userDetails = JSON.parse(prevAuth!);
   const [authenticated, setAuthenticated] = useState<Player | null>(() => userDetails);
 
   useEffect(() => {
+    // save to localstorage on login
     if (authenticated) {
-      localStorage.setItem("authenticated", JSON.stringify(authenticated));
+      localStorage.setItem(AUTH_KEY, JSON.stringify(authenticated));
     }
   }, [authenticated]);
-
   const signIn = (username: string, password: string, callback: any) => {
-    login(username, password).then((result) => {
-      if (!result) return;
-      else if (result?.status === "success") {
-        setAuthenticated(result.player);
-      }
-      callback(result);
-    });
+    // do somthing after login API success
   };
-
   const signOut = (username: string, callback: any) => {
-    logout(username).then((response) => {
-      if (!response) return;
-      else if (response?.status === "success") {
-        setAuthenticated(null);
-      }
-      callback(response);
-    });
+    // do somthing after logout API success
   };
-
   const initialValue = { authenticated, signIn, signOut };
 
   return <AuthContext.Provider value={initialValue}>{children}</AuthContext.Provider>;
+};
+```
+
+> Custom Protected Route component.
+
+```typescript
+import { useLocation, Navigate } from "react-router-dom";
+import { useAuth } from "./AuthProvider"; // component above
+
+const AuthenticatedRoute: FC<Props> = ({ children }) => {
+  let auth = useAuth();
+  let location = useLocation();
+  if (!auth.authenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  return children;
 };
 ```
