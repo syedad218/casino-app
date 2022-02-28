@@ -19,13 +19,3 @@ jobs:
         run: npm install
       - name: Build page
         run: npm run build
-        env:
-          REACT_APP_JSON_SERVER: ${{ secrets.REACT_APP_JSON_SERVER }}
-          PUBLIC_URL: ${{ secrets.REACT_APP_PUBLIC_URL }}
-          REACT_APP_PUBLIC_URL: ${{ secrets.REACT_APP_PUBLIC_URL }}
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./build
