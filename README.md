@@ -13,49 +13,49 @@
 
 ## App structure
 
-- It's a single page application using React - [React.js](https://reactjs.org/)
-- It's using React Router to manage routing. - [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
-- Authentication is managed by using custom AuthProvider context. - [React Context](https://reactjs.org/docs/context.html)
-- Application is using Semantic style for styling and UI components. - [Semantic UI](https://react.semantic-ui.com/)
-- Code is written in Typescript - [TypeScript](https://www.typescriptlang.org/)
-- It's using JSON-Server to mock API calls and Database data. - [JSON-Server](https://github.com/typicode/json-server)
+- It's a single page application using React - [React.js](https://reactjs.org/) &nbsp; <img src="https://slackmojis.com/emojis/1161-react/download" width="12px" height="12px" alt="reactjs">
+- It's using React Router to manage routing. - [React Router](https://reacttraining.com/react-router/web/guides/quick-start) &nbsp; <img src="https://iconape.com/wp-content/files/sm/371377/svg/371377.svg" width="12px" height="12px" alt="react-router">
+- Authentication is managed by using custom AuthProvider context. - [React Context](https://reactjs.org/docs/context.html) &nbsp; <img src="https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png" width="12px" height="12px" alt="react-context">
+- Application is using Semantic style for styling and UI components. - [Semantic UI](https://react.semantic-ui.com/) &nbsp; <img src="https://semantic-ui.com/images/logo.png" width="12px" height="12px" alt="semantic-ui">
+- Code is written in Typescript - [TypeScript](https://www.typescriptlang.org/) &nbsp; <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" width="12px" height="12px" alt="typescript">
+- It's using JSON-Server to mock API calls and Database data. - [JSON-Server](https://github.com/typicode/json-server) &nbsp; <img src="https://cms-assets.tutsplus.com/uploads/users/34/posts/27871/preview_image/json.jpg" width="12px" height="12px" alt="json-server">
 
 ## Functionality
 
-- [x] Authenticated Routes
-  - [x] Custom component that checks for auth state before taking to protected route and redirects to login page if not authenticated.
-- [x] Login
-  - [x] Store the path that user is trying to access if not logged in, and redirect to login page.
-  - [x] Login with username and password
-  - [x] Error message when login fails, allow to retry
-  - [x] Redirect to home page or path user was trying to access, after successful login
-  - [x] Persist login state after page reload, using localStorage
-  - [x] If already logged in, redirect to home page when accessing login page
-- [x] Logout
-  - [x] Clear login state from localStorage and context on successful logout.
-  - [x] Redirect to login page
-  - [ ] Show error message if logout fails
-- [x] List Games and Categories
-  - [x] Requires user to be logged in
-  - [x] List all games and categories using provided API's
-  - [x] Filter games by category
-  - [x] Filter games by search term
-  - [ ] Paginate games by page number in case of large list
-  - [ ] Sort games by popularity, published date, etc
-- [x] Play Game
-  - [x] Requires user to be logged in
-  - [x] Play a game by clicking on Play button, using provided JS Function
-  - [x] Page should be responsive on Mobile device as well
-  - [x] Ability to go back to listing screen
-  - [ ] Game screen iframe can send an event to parent window when game is finished loading, so that parent window can show the game screen. While the game iframe is loading the game screen can show a loading screen.
-- [x] Filter Games by searching in the search bar
-  - [x] Search by game name
-  - [ ] Search by game description
-  - [x] Debounce user typing event to reduce state updates
-  - [x] Show empty state text when no results found
-- [x] Filter Games by category by choosing a category
-  - [x] Filter games by category by clicking on a category
-  - [x] Show active state on selected category by background color
+- [x] **Authenticated Routes**
+  - [x] _Custom component that checks for auth state before taking to protected route and redirects to login page if not authenticated._
+- [x] **Login**
+  - [x] _Store the path that user is trying to access if not logged in, and redirect to login page._
+  - [x] _Login with username and password_
+  - [x] _Error message when login fails, allow to retry_
+  - [x] _Redirect to home page or path user was trying to access, after successful login_
+  - [x] _Persist login state after page reload, using localStorage_
+  - [x] _If already logged in, redirect to home page when accessing login page_
+- [x] **Logout**
+  - [x] _Clear login state from localStorage and context on successful logout._
+  - [x] _Redirect to login page_
+  - [ ] _Show error message if logout fails_
+- [x] **List Games and Categories**
+  - [x] _Requires user to be logged in_
+  - [x] _List all games and categories using provided API's_
+  - [x] _Filter games by category_
+  - [x] _Filter games by search term_
+  - [ ] _Paginate games by page number in case of large list_
+  - [ ] _Sort games by popularity, published date, etc_
+- [x] **Play Game**
+  - [x] _Requires user to be logged in_
+  - [x] _Play a game by clicking on Play button, using provided JS Function_
+  - [x] _Page should be responsive on Mobile device as well_
+  - [x] _Ability to go back to listing screen_
+  - [ ] _Game screen iframe can send an event to parent window when game is finished loading, so that parent window can show the game screen. While the game iframe is loading the game screen can show a loading screen._
+- [x] **Filter Games by searching in the search bar**
+  - [x] _Search by game name_
+  - [ ] _Search by game description_
+  - [x] _Debounce user typing event to reduce state updates_
+  - [x] _Show empty state text when no results found_
+- [x] **Filter Games by category by choosing a category**
+  - [x] _Filter games by category by clicking on a category_
+  - [x] _Show active state on selected category by background color_
 
 ## Updates to the existing code
 
