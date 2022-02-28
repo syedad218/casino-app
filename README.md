@@ -25,7 +25,7 @@
     .
     ├── src
         ...
-        ├── index.tsx (main entry point)
+        ├── index.tsx (main entry point)             # entry into the app
         ├── App
         |   ├── index.tsx
         |   ├── AuthProvider.tsx                     # AuthProvider context
@@ -42,16 +42,16 @@
             ├── GameScreen
             |   ├── index.tsx
             ├── Home
-            |   ├── index.tsx
+            |   ├── index.tsx                        # Home page
             |   ├── actions.ts
             |   ├── Games.tsx
             |   ├── Categories.tsx
             ├── Login
-                ├── index.tsx
+                ├── index.tsx                        # Login screen
                 ├── actions.ts
         ...
 
-## Functionality
+## Existing Functionalities And Improvements To Do :seedling:
 
 - [x] **Authenticated Routes**
   - [x] _Custom component that checks for auth state before taking to protected route and redirects to login page if not authenticated._
@@ -99,9 +99,15 @@
 ```
 
 - updated the search bar to be responsive on mobile devices. using fluid semantic class and stack below the user details.
+
+```diff
+- <div className="search ui small icon input">
++ <div className="search ui fluid left floated icon input">
+```
+
 - made the category list relaxed by using relaxed semantic class.
 - added active category state to the category list. by adding `active` semantic class to the category list item.
-- made the game-play screen responsive on mobile devices, by updating the width to `100%` during initializing the iframe, inside the `game.launch` function definition.
+- made the game-play screen responsive on mobile devices, by updating the width to `100%` during initializing the iframe, inside the `game.launch` function definition inside `/lib/comeon.game-1.0.min.js`.
 
 ```diff
 - s.frameBorder=0,s.width="640px",s.height="480px"
@@ -112,7 +118,7 @@
 
 ## Notes
 
-> Custom Auth provider implementation using React Context.
+**Custom Auth provider implementation using React Context.**
 
 ```typescript
 export const AuthContext = createContext<AuthContextType>(null!);
@@ -140,7 +146,7 @@ const AuthProvider: FC<Props> = ({ children }) => {
 };
 ```
 
-> Custom Protected Route component.
+**Custom Protected Route component using React Router@6**
 
 ```typescript
 import { useLocation, Navigate } from "react-router-dom";
