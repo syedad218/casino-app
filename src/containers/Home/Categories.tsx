@@ -9,7 +9,7 @@ interface Props {
   categories: CategoryType[];
   selectedCategory: number;
   setSelectCategory: React.Dispatch<React.SetStateAction<number>>;
-  loading: boolean;
+  loading?: boolean;
 }
 
 const Categories: FC<Props> = ({ categories, selectedCategory, setSelectCategory, loading }) => {

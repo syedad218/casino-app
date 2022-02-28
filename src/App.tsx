@@ -15,19 +15,19 @@ function App() {
       <div className="main container">
         <Routes>
           <Route
-            path="/games/:game"
+            path="/"
             element={
               <AuthenticatedRoute>
-                <GameScreen />
+                <Home />
               </AuthenticatedRoute>
             }
           />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/"
+            path="/games/:game"
             element={
               <AuthenticatedRoute>
-                <Home />
+                <GameScreen />
               </AuthenticatedRoute>
             }
           />

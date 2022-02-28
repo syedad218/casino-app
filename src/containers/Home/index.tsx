@@ -46,7 +46,7 @@ const Home = () => {
       <div className="ui two column stackable grid">
         <div className="twelve wide column">
           <h3 className="ui dividing header">Games</h3>
-          <Games filteredGames={filteredGames} loading={true} />
+          <Games filteredGames={filteredGames} />
         </div>
         <div className="four wide column">
           <h3 className="ui dividing header">Categories</h3>
@@ -54,7 +54,6 @@ const Home = () => {
             categories={categories}
             selectedCategory={selectedCategory}
             setSelectCategory={setSelectedCategory}
-            loading={true}
           />
         </div>
       </div>

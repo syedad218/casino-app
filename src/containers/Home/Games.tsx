@@ -11,7 +11,7 @@ export interface GameType {
 
 interface Props {
   filteredGames: GameType[];
-  loading: boolean;
+  loading?: boolean;
 }
 
 const Game: FC<Props> = ({ filteredGames, loading }) => {
