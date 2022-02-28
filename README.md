@@ -105,7 +105,7 @@
 
 ```diff
 - s.frameBorder=0,s.width="640px",s.height="480px"
-+ s.frameBorder=0,s.width="100%",s.height="100%"
++ s.frameBorder=0,s.width="100%",s.height="480px"
 ```
 
 - moved the back button to the top row of the game screen, so that game screen can occupy full grid width
