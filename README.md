@@ -7,7 +7,9 @@
 - create a `.env.local` file and add following variables:
   - `REACT_APP_JSON_SERVER=http://localhost:3001`
 - Run `npm run start` to start the react app locally
-- go to http://localhost:3000/ and voila! you have the app running
+- go to http://localhost:3000/
+
+> Voila! you have the app running :celebrate:
 
 ## App structure
 
