@@ -42,7 +42,7 @@ const Game: FC<Props> = ({ filteredGames, loading }) => {
             <div className="extra">
               <div
                 className="play ui right floated secondary button inverted"
-                onClick={() => navigate(`/games/${game?.code}`)}
+                onClick={() => navigate(`/casino-app/games/${game?.code}`)}
               >
                 Play
                 <i className="right chevron icon"></i>

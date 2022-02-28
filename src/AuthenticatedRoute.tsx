@@ -10,7 +10,7 @@ const AuthenticatedRoute: FC<Props> = ({ children }) => {
   let auth = useAuth();
   let location = useLocation();
   if (!auth.authenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/casino-app/login" state={{ from: location }} replace />;
   }
   return children;
 };
