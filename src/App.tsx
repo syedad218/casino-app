@@ -15,23 +15,23 @@ function App() {
       <div className="main container">
         <Routes>
           <Route
-            path="/casino-app/games/:game"
+            path="/games/:game"
             element={
               <AuthenticatedRoute>
                 <GameScreen />
               </AuthenticatedRoute>
             }
           />
-          <Route path="/casino-app/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route
-            path="/casino-app"
+            path="/"
             element={
               <AuthenticatedRoute>
                 <Home />
               </AuthenticatedRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/casino-app" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </div>
