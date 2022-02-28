@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { GameType } from "./types";
 
 interface Props {
@@ -8,8 +8,9 @@ interface Props {
 
 const Game: FC<Props> = ({ game }) => {
   const navigate = useNavigate();
+  const playGame = () => navigate(`/games/${game?.code}`);
   return (
-    <div className="game item" key={game?.code}>
+    <Link className="game item" key={game?.code} to={`/games/${game?.code}`}>
       <div className="ui small image">
         <img src={game?.icon} alt="game-icon" />
       </div>
@@ -19,16 +20,13 @@ const Game: FC<Props> = ({ game }) => {
         </div>
         <div className="description">{game?.description}</div>
         <div className="extra">
-          <div
-            className="play ui right floated secondary button inverted"
-            onClick={() => navigate(`/games/${game?.code}`)}
-          >
+          <div className="play ui right floated secondary button inverted" onClick={playGame}>
             Play
             <i className="right chevron icon"></i>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

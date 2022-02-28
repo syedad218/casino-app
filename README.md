@@ -11,6 +11,10 @@
 
 > Voila! you have the app running :tada:
 
+> Demo usage of app :fire:
+
+> <img src="docs/casino-app-demo.gif" width="250" height="500" alt="app-demo" />
+
 ## App structure
 
 - It's a single page application using React - [React.js](https://reactjs.org/) &nbsp; <img src="https://slackmojis.com/emojis/1161-react/download" width="16px" height="16px" alt="reactjs">
