@@ -40,7 +40,7 @@
         |   |   ├── index.tsx
         ├── Containers                               # Containers/Pages of App
             ├── GameScreen
-            |   ├── index.tsx
+            |   ├── index.tsx                        # Game play page
             ├── Home
             |   ├── index.tsx                        # Home page
             |   ├── actions.ts
@@ -98,14 +98,14 @@
 + <div className="ui stackable grid">
 ```
 
-- updated the search bar to be responsive on mobile devices. using fluid semantic class and stack below the user details.
+- updated the search bar to be responsive on mobile devices. using `fluid` semantic class and stack below the user details.
 
 ```diff
 - <div className="search ui small icon input">
 + <div className="search ui fluid left floated icon input">
 ```
 
-- made the category list relaxed by using relaxed semantic class.
+- made the category list relaxed by using `relaxed` semantic class.
 - added active category state to the category list. by adding `active` semantic class to the category list item.
 - made the game-play screen responsive on mobile devices, by updating the width to `100%` during initializing the iframe, inside the `game.launch` function definition inside `/lib/comeon.game-1.0.min.js`.
 

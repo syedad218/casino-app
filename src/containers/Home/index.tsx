@@ -39,7 +39,7 @@ const Home = () => {
   }, [games, searchText, selectedCategory]);
 
   return (
-    <div className="casino" style={{ display: "block" }}>
+    <div className="casino">
       <div className="ui two column stackable grid centered">
         <Profile user={player} handleLogout={handleLogout} />
         <SearchBar setSearchText={setSearchText} />

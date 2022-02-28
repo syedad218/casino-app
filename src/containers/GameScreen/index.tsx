@@ -11,7 +11,7 @@ const GameScreen = () => {
   }, [game]);
 
   return (
-    <div className="ingame" style={{ display: "block" }}>
+    <div className="ingame">
       <div className="ui stackable grid centered">
         <div className="sixteen wide column">
           <div className="ui secondary button inverted" onClick={() => navigate("/")}>

@@ -1,20 +1,27 @@
-import { useEffect, useState } from "react";
+import { FormEvent, FormEventHandler, useEffect, useState } from "react";
 import { useAuth } from "../App/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+
+interface CustomizedState {
+  from: {
+    pathname: string;
+  };
+}
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const location: any = useLocation();
+  const location = useLocation();
+  const state = location.state as CustomizedState;
   const navigate = useNavigate();
   const auth = useAuth();
-  const from = location.state?.from?.pathname || "/";
+  const from = state?.from?.pathname || "/";
 
   /** handle already logged-in users by redirecting to home screen */
   useEffect(() => {
-    if (auth.authenticated) {
+    if (auth?.authenticated) {
       navigate(from, { replace: true });
     }
   }, [auth, from, navigate]);
@@ -27,14 +34,13 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit: FormEventHandler = (e: FormEvent) => {
     auth.signIn(username, password, loginCallback);
-
     e.preventDefault();
   };
 
   return (
-    <div className="login" style={{ display: "block" }}>
+    <div className="login">
       <div className="ui grid centered">
         <form onSubmit={handleSubmit}>
           <div className="fields">
@@ -75,7 +81,7 @@ const Login = () => {
             <div className="ui negative message">
               <i className="close icon" onClick={() => setError("")}></i>
               <div className="header">Login failed!</div>
-              <p>{error.charAt(0).toUpperCase() + error.slice(1)}</p>
+              <p>{error?.charAt(0)?.toUpperCase() + error.slice(1)}</p>
             </div>
           </div>
         )}
