@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useAuth } from "../../AuthProvider";
 import { fetchGames, fetchCategories } from "./actions";
 import Games, { GameType } from "./Games";

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
